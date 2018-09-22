@@ -29,8 +29,11 @@ public class PersonalTwitterFeed {
         String tweeterName = keyboard.nextLine();
         
         System.out.println("Nice to meet you " + tweeterName + "!");
-        System.out.println("Enter your tweets and I will add them to your timeline!");
+        //System.out.println("Enter your tweets and I will add them to your timeline!");
         
+        newTweet(tweets);
+        
+        /*
         int numTweets = 0;
         
         while(numTweets < (MAX_NUMBER_TWEETS - 1)) {
@@ -52,12 +55,32 @@ public class PersonalTwitterFeed {
         }
         
         System.out.println("Your twitter feed is full");
+        */
     }
     
     public static String getTimeStamp(){
         Date now = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ");
         return dateFormat.format(now);
-    }
+    } //getTimeStamp method
+    
+    public static void newTweet(String [] tweet){
+        Scanner scan=new Scanner(System.in);
+        String newTweet;
+        int count=0;
+        int MaxTweet=200;
+        while(count<MaxTweet-1){
+            System.out.println("Enter your tweets and I will add them to your timeline!");
+            newTweet=scan.nextLine();
+            if(newTweet.equals("end")){
+                break;
+            } else {
+            tweet[count]=newTweet+" "+getTimeStamp();
+            
+            System.out.println("You Personal Timeline is: " + tweet[count]);
+            count++;
+            }
+        }
+    } // newTweet method
     
 }
